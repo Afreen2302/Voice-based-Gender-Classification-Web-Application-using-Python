@@ -1,0 +1,11 @@
+flask              # Web framework for building the web application
+numpy              # Fundamental package for scientific computing with Python
+scipy              # Library for mathematics, science, and engineering
+librosa            # Audio and music processing library
+scikit-learn       # Machine learning library for gender classification
+tensorflow         # Deep learning library for neural networks
+keras              # High-level neural networks API (requires TensorFlow backend)
+pydub              # Audio file conversion and manipulation library
+flask-uploads      # File uploads for Flask web applications
+werkzeug           # Utility library for the Flask framework
+-e .

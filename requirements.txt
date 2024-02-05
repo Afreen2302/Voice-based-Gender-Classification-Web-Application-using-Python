@@ -8,4 +8,5 @@ keras              # High-level neural networks API (requires TensorFlow backend
 pydub              # Audio file conversion and manipulation library
 flask-uploads      # File uploads for Flask web applications
 werkzeug           # Utility library for the Flask framework
+sys
 -e .

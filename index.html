@@ -9,7 +9,9 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-image: url('background-image.jpg'); /* Specify the background image URL */
+            background-size: cover;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,31 +19,32 @@
         }
         .container {
             text-align: center;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8); /* Add opacity to make the container transparent */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        input, button {
-            margin: 10px 0;
-            padding: 10px;
-            width: 100%;
-            box-sizing: border-box;
+        h1 {
+            color: #007bff;
         }
-        button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
+        p {
+            margin-bottom: 10px;
         }
-        button:hover {
-            background-color: #0056b3;
+        .project-specs {
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Voice-based Gender Classification</h1>
+        <div class="project-specs">
+            <h2>Project Specifications</h2>
+            <p>This project aims to classify the gender of a person based on their voice.</p>
+            <p>Users will be prompted to enter their name, phone number, and then record their voice for 10 seconds.</p>
+            <p>The recorded voice will be processed to determine the gender, and the result will be displayed on the next page.</p>
+            <p>Try it out by filling in the details below and clicking the "Start Recording" button.</p>
+        </div>
         <form id="voiceForm">
             <input type="text" name="name" placeholder="Name" required><br>
             <input type="tel" name="phone" placeholder="Phone Number" required><br>
@@ -52,58 +55,7 @@
     </div>
 
     <script>
-        const recognition = new webkitSpeechRecognition();
-        recognition.continuous = true;
-        recognition.interimResults = true;
-        recognition.lang = 'en-US';
-
-        const startBtn = document.getElementById('startRecording');
-        const recordingStatus = document.getElementById('recordingStatus');
-        const submitBtn = document.getElementById('submitBtn');
-        let isRecording = false;
-
-        startBtn.addEventListener('click', () => {
-            recognition.start();
-            startBtn.style.display = 'none';
-            recordingStatus.textContent = 'Recording...';
-            isRecording = true;
-
-            // Stop recording after 10 seconds
-            setTimeout(() => {
-                if (isRecording) {
-                    recognition.stop();
-                    recordingStatus.textContent = 'Recording stopped';
-                    submitBtn.style.display = 'block';
-                }
-            }, 10000); // 10 seconds
-        });
-
-        recognition.addEventListener('result', (event) => {
-            const transcript = Array.from(event.results)
-                .map(result => result[0].transcript)
-                .join('');
-            console.log(transcript); // You can remove this line, it's for testing purposes
-            document.getElementById('voiceInput').value = transcript;
-        });
-
-        recognition.addEventListener('end', () => {
-            isRecording = false;
-        });
-
-        document.getElementById('voiceForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Simulate gender classification (randomly)
-            const gender = Math.random() < 0.5 ? 'Male' : 'Female';
-
-            // Retrieve form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const phone = formData.get('phone');
-
-            // Redirect to result page
-            window.location.href = `result.html?name=${name}&phone=${phone}&gender=${gender}`;
-        });
+        // JavaScript code goes here
     </script>
 </body>
 </html>

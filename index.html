@@ -45,12 +45,38 @@
         <form id="voiceForm">
             <input type="text" name="name" placeholder="Name" required><br>
             <input type="tel" name="phone" placeholder="Phone Number" required><br>
-            <input type="file" id="voiceInput" name="voice" accept="audio/*" capture required><br>
-            <button type="submit">Submit</button>
+            <button id="startRecording">Start Recording</button><br>
+            <p id="recordingStatus"></p>
+            <button type="submit" id="submitBtn" style="display:none;">Submit</button>
         </form>
     </div>
 
     <script>
+        const recognition = new webkitSpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.lang = 'en-US';
+
+        const startBtn = document.getElementById('startRecording');
+        const recordingStatus = document.getElementById('recordingStatus');
+        const submitBtn = document.getElementById('submitBtn');
+
+        startBtn.addEventListener('click', () => {
+            recognition.start();
+            startBtn.style.display = 'none';
+            recordingStatus.textContent = 'Recording...';
+        });
+
+        recognition.addEventListener('result', (event) => {
+            const transcript = Array.from(event.results)
+                .map(result => result[0].transcript)
+                .join('');
+            console.log(transcript); // You can remove this line, it's for testing purposes
+            document.getElementById('voiceInput').value = transcript;
+            submitBtn.style.display = 'block';
+            recordingStatus.textContent = '';
+        });
+
         document.getElementById('voiceForm').addEventListener('submit', function(e) {
             e.preventDefault();
 

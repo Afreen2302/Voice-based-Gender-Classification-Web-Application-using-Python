@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice-based Gender Classification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Voice-based Gender Classification</h1>
+        <form id="voiceForm">
+            <input type="text" name="name" placeholder="Name" required><br>
+            <input type="tel" name="phone" placeholder="Phone Number" required><br>
+            <input type="file" id="voiceInput" name="voice" accept="audio/*" capture required><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('voiceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Simulate gender classification (randomly)
+            const gender = Math.random() < 0.5 ? 'Male' : 'Female';
+
+            // Retrieve form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+
+            // Redirect to result page
+            window.location.href = `result.html?name=${name}&phone=${phone}&gender=${gender}`;
+        });
+    </script>
+</body>
+</html>

@@ -4,4 +4,5 @@ This project focuses on developing a web-based application that utilizes direct 
 The core of the implementation involves capturing and preprocessing the incoming voice signals, extracting relevant features, and employing a trained machine learning model to classify the gender of the speaker. The Python programming language is leveraged for its versatility and rich ecosystem of libraries, facilitating seamless integration of signal processing and machine learning components.
 
 The resulting web application provides an intuitive and user-friendly interface for individuals to engage with the gender classification functionality. The accuracy and efficiency of the system are validated through rigorous testing with diverse voice samples.
-~ S. Afreen
+
+- S. Afreen

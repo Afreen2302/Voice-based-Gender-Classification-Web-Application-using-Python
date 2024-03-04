@@ -60,11 +60,22 @@
         const startBtn = document.getElementById('startRecording');
         const recordingStatus = document.getElementById('recordingStatus');
         const submitBtn = document.getElementById('submitBtn');
+        let isRecording = false;
 
         startBtn.addEventListener('click', () => {
             recognition.start();
             startBtn.style.display = 'none';
             recordingStatus.textContent = 'Recording...';
+            isRecording = true;
+
+            // Stop recording after 10 seconds
+            setTimeout(() => {
+                if (isRecording) {
+                    recognition.stop();
+                    recordingStatus.textContent = 'Recording stopped';
+                    submitBtn.style.display = 'block';
+                }
+            }, 10000); // 10 seconds
         });
 
         recognition.addEventListener('result', (event) => {
@@ -73,8 +84,10 @@
                 .join('');
             console.log(transcript); // You can remove this line, it's for testing purposes
             document.getElementById('voiceInput').value = transcript;
-            submitBtn.style.display = 'block';
-            recordingStatus.textContent = '';
+        });
+
+        recognition.addEventListener('end', () => {
+            isRecording = false;
         });
 
         document.getElementById('voiceForm').addEventListener('submit', function(e) {

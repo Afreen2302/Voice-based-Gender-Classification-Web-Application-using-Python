@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Specifications</title>
+    <title>Voice-based Gender Classification</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-UYBd3+Zhx6tiOMHJckBTTNPpdsUPsj2A1qhiKaQknEANk1xigXy0ezuUKLs0kPTN" crossorigin="anonymous">
     <style>
         body {
@@ -34,20 +34,30 @@
         .project-specs {
             margin-top: 20px;
         }
+        .homepage-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
     </style>
 </head>
 <body>
+    <a href="homepage.html" class="homepage-link">Homepage</a>
     <div class="container">
-        <h1>Project Specifications</h1>
-        <div class="project-specs">
-            <h2>Overview</h2>
-            <p>This project aims to classify the gender of a person based on their voice.</p>
-            <h2>Functionality</h2>
-            <p>Users will be prompted to enter their name, phone number, and then record their voice for 10 seconds.</p>
-            <p>The recorded voice will be processed to determine the gender, and the result will be displayed on the next page.</p>
-            <h2>Try It Out</h2>
-            <p>Visit the main page to experience the project firsthand!</p>
-        </div>
+        <h1>Voice-based Gender Classification</h1>
+        <form id="voiceForm">
+            <input type="text" name="name" placeholder="Name" required><br>
+            <input type="tel" name="phone" placeholder="Phone Number" required><br>
+            <button id="startRecording">Start Recording</button><br>
+            <p id="recordingStatus"></p>
+            <button type="submit" id="submitBtn" style="display:none;">Submit</button>
+        </form>
     </div>
+
+    <script>
+        // JavaScript code goes here
+    </script>
 </body>
 </html>
